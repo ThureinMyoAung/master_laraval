@@ -22,7 +22,7 @@ class PostTest extends TestCase
         //Arrange Part
         $post = $this->createDummyBlogPost();
 
-        // $post = $this->createDummyBlogPost();
+
 
         //Act part
         $response =  $this->get('/posts');
