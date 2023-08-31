@@ -11,6 +11,7 @@ class BlogPostFactory extends Factory
 {
     /**
      * Define the model's default state.
+     * Define the model's default state.
      *
      * @return array<string, mixed>
      */
