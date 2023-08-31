@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\BlogPost;
+use App\Comment;
+use Carbon\Factory;
 
 class PostTest extends TestCase
 {
@@ -20,8 +22,10 @@ class PostTest extends TestCase
         //Arrange Part
         $post = $this->createDummyBlogPost();
 
+        // $post = $this->createDummyBlogPost();
+
         //Act part
-        $response = $this->get('/post');
+        $response =  $this->get('/posts');
 
         //Assert part
         $response->assertSeeText('New Title');
@@ -32,7 +36,24 @@ class PostTest extends TestCase
         ]);
     }
 
+    public function testSee1BlogPostWhenWithComments()
+    {
+        //Arrange Part
+        $post = $this->createDummyBlogPost();
+        \App\Models\User::factory(4)->create([
+            'blog_post_id' => $post->id
+        ]);
 
+        // factory(Comment::class, 4)->create([
+        //     'blog_post_id' => $post->id
+        // ]);
+
+
+        //Act part
+        $response = $this->get('/post');
+
+        $response->assertSeeText('4 comments');
+    }
 
 
 
