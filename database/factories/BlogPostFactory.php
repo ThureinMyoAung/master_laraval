@@ -18,6 +18,7 @@ class BlogPostFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(10),
+            // 'title' => $this->faker->sentence(10),
             'content' => $this->faker->paragraph(5, true),
 
         ];
